@@ -42,7 +42,7 @@ export default Ember.Component.extend({
 
   setUnknownProperty: function(key, value) {
     if (key === 'resolved') {
-      Ember.deprecate("The 'resolved' property is deprecated. Please use 'fulfilled'", false);
+      Ember.deprecate('The "resolved" property is deprecated. Please use "fulfilled"', false);
       key = 'fulfilled';
     }
 
