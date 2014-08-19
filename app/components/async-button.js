@@ -28,6 +28,8 @@ export default Ember.Component.extend({
   }),
 
   handleActionPromise: Ember.observer('promise', function() {
+    this.set('textState', 'pending');
+
     var _this = this;
     this.get('promise').then(function() {
       _this.set('textState', 'fulfilled');
