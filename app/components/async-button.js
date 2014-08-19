@@ -11,15 +11,16 @@ export default Ember.Component.extend({
   disabled: Ember.computed.equal('textState','pending'),
 
   click: function() {
-    var _this = this;
-    this.sendAction('action', function(promise){
-      _this.set('promise', promise);
-    });
-    this.set('textState', 'pending');
+    if (this.get('action')) {
+      var _this = this;
+      this.sendAction('action', function(promise) {
+        _this.set('promise', promise);
+      });
 
-    // If this is part of a form, it will perform an HTML form
-    // submission
-    return false;
+      // If this is part of a form, it will preform an HTML form
+      // submission
+      return false;
+    }
   },
 
   text: Ember.computed('textState', 'default', 'pending', 'resolved', 'fulfilled', 'rejected', function() {
