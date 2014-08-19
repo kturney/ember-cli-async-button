@@ -31,10 +31,12 @@ export default Ember.Component.extend({
     this.set('textState', 'pending');
 
     var _this = this;
-    this.get('promise').then(function() {
+    this.get('promise').then(function(value) {
       _this.set('textState', 'fulfilled');
-    }).catch(function() {
+      return value;
+    }).catch(function(reason) {
       _this.set('textState', 'rejected');
+      throw reason;
     });
   }),
 
